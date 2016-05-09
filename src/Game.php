@@ -3,8 +3,8 @@ namespace Bowling;
 
 class Game
 {
-
-    private $score;
+    /** @var int $score  */
+    private $score = 0;
 
     /**
      * Game constructor.
@@ -13,11 +13,17 @@ class Game
     {
     }
 
-    public function roll($int)
+    /**
+     * @param int $pins
+     */
+    public function roll($pins)
     {
-        $this->score += $int;
+        $this->score += $pins;
     }
 
+    /**
+     * @return int
+     */
     public function score()
     {
         return $this->score;
