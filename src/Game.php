@@ -5,6 +5,10 @@ class Game
 {
     /** @var int $score  */
     private $score = 0;
+    /** @var array  */
+    private $rolls = array();
+    /** @var int  */
+    private $currentRoll = 0;
 
     /**
      * Game constructor.
@@ -18,7 +22,7 @@ class Game
      */
     public function roll($pins)
     {
-        $this->score += $pins;
+        $this->rolls[$this->currentRoll++] = $pins;
     }
 
     /**
@@ -26,6 +30,10 @@ class Game
      */
     public function score()
     {
-        return $this->score;
+        $score = 0;
+        for ($i = 0; $i < count($this->rolls) ; $i++) {
+            $score += $this-> rolls[$i];
+        }
+        return $score;
     }
 }
