@@ -32,7 +32,7 @@ class Game
     {
         $score     = 0;
         $rollIndex = 0;
-        for ($frameIndex = 0; $frameIndex < 10; $frameIndex++) {
+        for ($frame = 0; $frame < 10; $frame++) {
             if ($this->isSpare($rollIndex)) {
                 $score += 10 + $this->rolls[$rollIndex + 2];
             } else {
