@@ -7,9 +7,10 @@ class GameTest extends \PHPUnit_Framework_TestCase
     /** @var Game $game */
     private $game;
 
+
+
     public function testOneSpare()
     {
-
         $this->rollSpare();
         $this->game->roll(3);
         $this->rollMany(17,0);
@@ -20,6 +21,16 @@ class GameTest extends \PHPUnit_Framework_TestCase
     {
         $this->game->roll(5);
         $this->game->roll(5);
+    }
+
+    public function testOneStrike()
+    {
+        // strike
+        $this->game->roll(10);
+        $this->game->roll(3);
+        $this->game->roll(4);
+        $this->rollMany(16, 0);
+        $this->assertSame(24, $this->game->score());
     }
 
     /**

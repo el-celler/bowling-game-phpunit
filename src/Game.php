@@ -33,12 +33,18 @@ class Game
         $score     = 0;
         $rollIndex = 0;
         for ($frame = 0; $frame < 10; $frame++) {
-            if ($this->isSpare($rollIndex)) {
+            if ($this->rolls[$rollIndex] == 10) {
+                $score += 10 + $this->rolls[$rollIndex + 1] +
+                    $this->rolls[$rollIndex + 2];
+                $rollIndex++;
+            } elseif ($this->isSpare($rollIndex)) {
                 $score += 10 + $this->rolls[$rollIndex + 2];
+                $rollIndex += 2;
             } else {
                 $score += $this->rolls[$rollIndex] + $this->rolls[$rollIndex + 1];
+                $rollIndex += 2;
             }
-            $rollIndex += 2;
+
         }
 
         return $score;
