@@ -3,11 +3,11 @@ namespace Bowling;
 
 class Game
 {
-    /** @var int $score  */
+    /** @var int $score */
     private $score = 0;
-    /** @var array  */
-    private $rolls = array();
-    /** @var int  */
+    /** @var array */
+    private $rolls = [];
+    /** @var int */
     private $currentRoll = 0;
 
     /**
@@ -30,10 +30,27 @@ class Game
      */
     public function score()
     {
-        $score = 0;
-        for ($i = 0; $i < count($this->rolls) ; $i++) {
-            $score += $this-> rolls[$i];
+        $score     = 0;
+        $rollIndex = 0;
+        for ($frameIndex = 0; $frameIndex < 10; $frameIndex++) {
+            if ($this->isSpare($rollIndex)) {
+                $score += 10 + $this->rolls[$rollIndex + 2];
+            } else {
+                $score += $this->rolls[$rollIndex] + $this->rolls[$rollIndex + 1];
+            }
+            $rollIndex += 2;
         }
+
         return $score;
+    }
+
+    /**
+     * @param $rollIndex
+     *
+     * @return bool
+     */
+    public function isSpare($rollIndex)
+    {
+        return ($this->rolls[$rollIndex] + $this->rolls[$rollIndex + 1]) == 10;
     }
 }
