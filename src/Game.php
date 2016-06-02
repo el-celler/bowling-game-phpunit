@@ -3,12 +3,16 @@ namespace Bowling;
 
 class Game
 {
-    const FRAMES_IN_GAME = self::ALL_PINS_DOWN;
+    const FRAMES_IN_GAME = 10;
+
     const ALL_PINS_DOWN  = 10;
+
     /** @var int $score */
     private $score = 0;
+
     /** @var array */
     private $rolls = [];
+    
     /** @var int */
     private $currentRoll = 0;
 
