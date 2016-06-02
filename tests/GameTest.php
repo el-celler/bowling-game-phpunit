@@ -37,6 +37,22 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $this->game->roll(10);
     }
 
+    public function testPerfectGame()
+    {
+        $this->rollMany(12, 10);
+        $this->assertSame(300, $this->game->score());
+    }
+
+    public function testOtherGameWithSpare()
+    {
+        $this->game->roll(3);
+        $this->game->roll(3);
+        $this->rollSpare();
+        $this->game->roll(5);
+        $this->rollMany(15,0);
+        $this->assertSame(26, $this->game->score());
+    }
+
     /**
      * SetUp for each test
      */

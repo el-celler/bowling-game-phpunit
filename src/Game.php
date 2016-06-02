@@ -43,7 +43,6 @@ class Game
                 $score += $this->rolls[$rollIndex] + $this->rolls[$rollIndex + 1];
                 $rollIndex += 2;
             }
-
         }
 
         return $score;
